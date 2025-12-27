@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReelFlow | Advanced Short Video Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #00d2ff;
+            --pink: #ff00c1;
+        }
+
+        body {
+            background-color: #030014;
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Animated Background Mesh */
+        .bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 193, 0.15) 0%, transparent 40%);
+            animation: backgroundSlowMove 20s infinite alternate;
+        }
+
+        @keyframes backgroundSlowMove {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, var(--blue), var(--pink));
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 30px rgba(255, 0, 193, 0.3);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.5);
+        }
+
+        #downloadModal { display: none; }
+        #downloadModal.show { display: flex; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="bg-mesh"></div>
+
+    <div class="text-center z-10 p-6">
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tighter mb-6" style="font-family: 'Syncopate';">
+            REEL<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">FLOW</span>
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-10 font-light">
+            The next generation of short-video sharing. AI-powered effects, lossless 4K flow, and seamless global distribution.
+        </p>
+
+        <button onclick="toggleModal()" class="btn-main px-12 py-6 rounded-2xl font-black text-2xl uppercase tracking-widest">
+            Install App
+        </button>
+    </div>
+
+    <div id="downloadModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md items-center justify-center p-4">
+        <div class="glass-card w-full max-w-md rounded-[40px] p-10 text-center relative shadow-2xl">
+            <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-pink-500 mx-auto rounded-full mb-8"></div>
+            
+            <div class="w-24 h-24 bg-gradient-to-br from-cyan-500 to-pink-500 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-lg">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-2">ReelFlow Professional</h2>
+            <p class="text-gray-500 text-sm mb-8">Version 1.0.0 • reelflow.apk</p>
+
+            <a href="reelflow.apk" download="reelflow.apk" class="block w-full">
+                <button class="w-full bg-white text-black font-bold py-5 rounded-2xl hover:bg-cyan-400 transition-colors mb-4 text-lg">
+                    Start Download
+                </button>
+            </a>
+
+            <button onclick="toggleModal()" class="text-gray-500 hover:text-white transition-colors text-sm uppercase tracking-widest">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('downloadModal');
+            modal.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
